@@ -1,68 +1,23 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    display: block;
+    @apply font-sf-pro-display font-normal
 }
 
-
-/* Font Weight 400  */
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('./assets/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
-    font-weight: 400;
-    font-style: normal;
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
 }
 
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('./assets/fonts/SFPRODISPLAYREGULARITALIC.OTF') format('opentype');
-    font-weight: 400;
-    font-style: italic;
+.smooth-scrollbar {
+    transition: scrollbar-width 0.3s ease, -ms-overflow-style 0.3s ease;
 }
 
-/* Font Weight 700 */
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('./assets/fonts/SFPRODISPLAYBOLD.OTF') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('./assets/fonts/SFPRODISPLAYBOLDITALIC.OTF') format('opentype');
-    font-weight: 700;
-    font-style: italic;
-}
-
-/* Font Weight 800 */
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('./assets/fonts/SFPRODISPLAYHEAVY.OTF') format('opentype');
-    font-weight: 800;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('./assets/fonts/SFPRODISPLAYHEAVYITALIC.OTF') format('opentype');
-    font-weight: 800;
-    font-style: italic;
-}
-
-/* Font Weight 500 */
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('./assets/fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('./assets/fonts/SFPRODISPLAYMEDIUMITALIC.OTF') format('opentype');
-    font-weight: 500;
-    font-style: italic;
+.scrollbar-hidden {
+    scrollbar-width: none;
+    /* Firefox için */
+    -ms-overflow-style: none;
+    /* IE/Edge için */
 }

@@ -1,14 +1,19 @@
-import styles from './App.module.css';
-import { useTranslation } from 'react-i18next';
+
+import data from '../src/assets/data/data.json'
+import { get } from 'lodash'
+import BottomTabs from './component/bottomTabs/BottomTabs';
+import Hero from './component/hero/Hero';
+
 
 export function App() {
-  const { t } = useTranslation()
   return (
     <>
-      <header>
-        <h1 className="text-3xl underline font-sf-pro font-bold">{t("intro_text")}</h1>
-      </header>
-      <main className={styles.main}></main>
+      <div className='w-full h-screen justify-center content-center lg:bg-soft-gray bg-content-bg'>
+        <div className='flex flex-col h-[736px] w-full bg-content-bg'>
+          <Hero />
+          <BottomTabs data={get(data, "tabs")} />
+        </div>
+      </div>
     </>
   );
 }

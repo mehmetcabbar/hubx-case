@@ -1,0 +1,24 @@
+{
+    "tabs": [
+        {
+            "id": 1,
+            "name": "Documents Scanner"
+        },
+        {
+            "id": 2,
+            "name": "Sign & Stamp"
+        },
+        {
+            "id": 3,
+            "name": "Batch Scanning"
+        }, 
+        {
+            "id": 4,
+            "name": "Advanced Filters"
+        },
+        {
+            "id": 5,
+            "name": "Export & Share"
+        }
+    ]
+}
