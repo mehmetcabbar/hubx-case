@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { isEqual } from 'lodash'
 
 import Icon1 from '../../assets/images/icons/1.svg'
@@ -22,6 +22,8 @@ type Item = {
 
 type IProps = {
     data: Item[];
+    activeTab: number;
+    setActiveTab: Dispatch<SetStateAction<number>>;
 };
 
 type IconType = {
@@ -51,9 +53,9 @@ const icons: IconType = {
 }
 
 
-const BottomTabs = ({ data }: IProps) => {
+const BottomTabs = ({ data, activeTab, setActiveTab }: IProps) => {
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-    const [activeTab, setActiveTab] = useState(0)
+    // const [activeTab, setActiveTab] = useState(0)
 
     const getMyIcon = (key: number): IconType[keyof IconType] => {
         const iconKey: string = isEqual(activeTab, key) ? `active${key + 1}` : `icon${key + 1}`
@@ -75,7 +77,7 @@ const BottomTabs = ({ data }: IProps) => {
                     return (
                         <div
                             key={key}
-                            ref={el => (itemRefs.current[key] = el)}
+                            ref={e => (itemRefs.current[key] = e)}
                             onClick={() => setActiveTab(key)}
                             className={`inline-flex justify-center items-center gap-4 h-full w-[300px] cursor-pointer hover:bg-custom-hover scrollbar-hidden ${!isEqual(0, key) ? "border-l" : null} ${isEqual(activeTab, key) ? "bg-custom-hover" : null}`}>
                             <img src={getMyIcon(key)} alt="icon-image" />
