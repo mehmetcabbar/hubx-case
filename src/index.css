@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body {
-    @apply font-sf-pro-display font-normal
+    @apply font-sf-pro-display font-normal overflow-x-hidden
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
