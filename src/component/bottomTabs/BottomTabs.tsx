@@ -1,43 +1,21 @@
-import { useEffect, useRef } from 'react';
 import { isEqual } from 'lodash'
+import { useEffect, useRef } from 'react';
+import { RootState } from '../../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { IconType, IProps, Item } from '../../types/Types';
+import { changeIndex } from '../../redux/slices/numberSlice';
 
 import Icon1 from '../../assets/images/icons/1.svg'
-import Active1 from '../../assets/images/icons/1Active.svg'
 import Icon2 from '../../assets/images/icons/2.svg'
-import Active2 from '../../assets/images/icons/2Active.svg'
 import Icon3 from '../../assets/images/icons/3.svg'
-import Active3 from '../../assets/images/icons/3Active.svg'
 import Icon4 from '../../assets/images/icons/4.svg'
-import Active4 from '../../assets/images/icons/4Active.svg'
 import Icon5 from '../../assets/images/icons/5.svg'
+import Active1 from '../../assets/images/icons/1Active.svg'
+import Active2 from '../../assets/images/icons/2Active.svg'
+import Active3 from '../../assets/images/icons/3Active.svg'
+import Active4 from '../../assets/images/icons/4Active.svg'
 import Active5 from '../../assets/images/icons/5Active.svg'
 
-
-type Item = {
-    id: number;
-    name: string;
-    icon?: string
-    activeIcon?: string
-};
-
-type IProps = {
-    data: Item[];
-    activeTab: number;
-    setActiveTab: Dispatch<SetStateAction<number>>;
-};
-
-type IconType = {
-    icon1: string;
-    active1: string;
-    icon2: string;
-    active2: string;
-    icon3: string;
-    active3: string;
-    icon4: string;
-    active4: string;
-    icon5: string;
-    active5: string;
-}
 
 const icons: IconType = {
     "icon1": Icon1,
@@ -53,14 +31,14 @@ const icons: IconType = {
 }
 
 
-const BottomTabs = ({ data, activeTab, setActiveTab }: IProps) => {
+const BottomTabs = ({ data }: IProps) => {
+    const dispatch = useDispatch();
+    const activeTab = useSelector((state: RootState) => state.number.index);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-    // const [activeTab, setActiveTab] = useState(0)
 
     const getMyIcon = (key: number): IconType[keyof IconType] => {
         const iconKey: string = isEqual(activeTab, key) ? `active${key + 1}` : `icon${key + 1}`
-        // TODO : I will check this type error
-        return icons[iconKey];
+        return icons[iconKey as keyof IconType];
     }
 
     useEffect(() => {
@@ -78,8 +56,10 @@ const BottomTabs = ({ data, activeTab, setActiveTab }: IProps) => {
                         <div
                             key={key}
                             ref={e => (itemRefs.current[key] = e)}
-                            onClick={() => setActiveTab(key)}
-                            className={`inline-flex justify-center items-center gap-4 h-full w-[300px] cursor-pointer hover:bg-custom-hover scrollbar-hidden ${!isEqual(0, key) ? "border-l" : null} ${isEqual(activeTab, key) ? "bg-custom-hover" : null}`}>
+                            onClick={() => dispatch(changeIndex(key))}
+                            className={`inline-flex justify-center items-center gap-4 h-full w-[300px] cursor-pointer hover:bg-custom-hover scrollbar-hidden 
+                                ${!isEqual(0, key) ? "border-l" : null} 
+                                    ${isEqual(activeTab, key) ? "bg-custom-hover" : null}`}>
                             <img src={getMyIcon(key)} alt="icon-image" />
                             <div className="font-medium text-xl">{item?.name}</div>
                         </div>
