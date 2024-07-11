@@ -1,7 +1,7 @@
 {
-    "translation": {
-        "learn_more": "Learn More",
-        "something_went_wrong": "Something Went Wrong",
-        "try_again": "Our engineers are trying to fix the problem. Please try again later!"
-    }
+  "translation": {
+    "learn_more": "Learn More",
+    "something_went_wrong": "Something Went Wrong",
+    "try_again": "Our engineers are trying to fix the problem. Please try again later!"
+  }
 }

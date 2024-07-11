@@ -1,23 +1,25 @@
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    @apply font-sf-pro-display font-normal overflow-x-hidden
+  @apply font-sf-pro-display font-normal overflow-x-hidden;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .smooth-scrollbar {
-    transition: scrollbar-width 0.3s ease, -ms-overflow-style 0.3s ease;
+  transition:
+    scrollbar-width 0.3s ease,
+    -ms-overflow-style 0.3s ease;
 }
 
 .scrollbar-hidden {
-    scrollbar-width: none;
-    /* Firefox için */
-    -ms-overflow-style: none;
-    /* IE/Edge için */
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
 }
