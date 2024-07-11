@@ -48,7 +48,7 @@ const BottomTabs = ({ data }: IProps) => {
     }, [activeTab]);
 
     return (
-        <div className="h-[124px] bg-white overflow-x-auto whitespace-nowrap w-full">
+        <div className="h-[124px] bg-white overflow-x-auto whitespace-nowrap w-full scrollbar-hidden">
             {
                 data &&
                 data.map((item: Item, key: number) => {
@@ -57,7 +57,7 @@ const BottomTabs = ({ data }: IProps) => {
                             key={key}
                             ref={e => (itemRefs.current[key] = e)}
                             onClick={() => dispatch(changeIndex(key))}
-                            className={`inline-flex justify-center items-center gap-4 h-full w-[300px] cursor-pointer hover:bg-custom-hover scrollbar-hidden 
+                            className={`inline-flex justify-center items-center gap-4 h-full w-[300px] cursor-pointer hover:bg-custom-hover 
                                 ${!isEqual(0, key) ? "border-l" : null} 
                                     ${isEqual(activeTab, key) ? "bg-custom-hover" : null}`}>
                             <img src={getMyIcon(key)} alt="icon-image" />

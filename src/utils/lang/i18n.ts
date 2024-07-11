@@ -1,17 +1,31 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import Turkish from './tr.json';
+import English from './en.json';
+
+interface TranslationResources {
+    [key: string]: string;
+}
+
+interface EnglishResources {
+    translation: TranslationResources;
+}
+
+const resources: {
+    en: {
+        translation: TranslationResources;
+    };
+} = {
+    en: English as EnglishResources,
+};
 
 await i18n.use(initReactI18next)
     .init({
         compatibilityJSON: 'v3',
-        fallbackLng: 'tr', // Yedek dil
-        resources: {
-            tr: Turkish
-        },
-        lng: 'tr', // Varsayılan dil
+        fallbackLng: 'en', // Backup Language
+        resources,
+        lng: 'en', // Default Language
         interpolation: {
-            escapeValue: false, // HTML kaçışı
+            escapeValue: false, // Escape HTML
         },
     });
 
